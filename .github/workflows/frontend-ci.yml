@@ -1,4 +1,4 @@
-name: Frontend Continuous Integration
+name: Frontend Continuous Integration1
 
 on:
   pull_request:
@@ -8,10 +8,9 @@ on:
       - main
 
   workflow_dispatch:
-
 jobs:
   hello:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: starter/frontend
