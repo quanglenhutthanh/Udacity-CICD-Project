@@ -1,17 +1,20 @@
 name: Frontend Continuous Integration
 
 on:
- pull_request:
-  types:
-  - closed
-  branches:
-  - master
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
 
- workflow_dispatch:
- 
+  workflow_dispatch:
+
 jobs:
-  testing-flow:
-    runs-on: ubuntu-test
+  hello:
+  runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: starter/frontend
     steps:
-     - name: hello-world
-       run: echo "Hello World"
+      - name: Checkout source code
+        run: echo "Checkout source code"
