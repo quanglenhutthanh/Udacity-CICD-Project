@@ -1,0 +1,17 @@
+name: Frontend Continuous Integration
+
+on:
+ pull_request:
+  types:
+  - closed
+  branches:
+  - master
+
+ workflow_dispatch:
+ 
+jobs:
+  testing-flow:
+    runs-on: ubuntu-test
+    steps:
+     - name: hello-world
+       run: echo "Hello World"
