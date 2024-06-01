@@ -1,4 +1,4 @@
-name: Frontend Continuous Integration1
+name: Frontend Continuous Integration
 
 on:
   pull_request:
@@ -16,4 +16,4 @@ jobs:
         working-directory: starter/frontend
     steps:
       - name: Checkout source code
-        run: echo "Checkout source code"
+        uses: actions/checkout@v3
