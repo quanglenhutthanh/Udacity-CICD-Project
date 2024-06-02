@@ -6,12 +6,11 @@ on:
       - main
 
   workflow_dispatch:
-
 jobs:
   test:
-    runs-on: ubuntu-test
+    runs-on:  ubuntu-latest
     defaults:
-      run: 
+      run:
         working-directory: starter/frontend
     steps:
       - name: Checkout source
@@ -24,27 +23,12 @@ jobs:
         run: npm ci
       - name: Run test
         run: npm test
-
   build:
-    runs-on: ubuntu-test
-    needs: test
+    runs-on: ubuntu-latest
+    needs: [lint,test]
     defaults:
-      run: 
+      run:
         working-directory: starter/frontend
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
-
-  deploy:
-    runs-on: ubuntu-test
-    needs: build
-    defaults:
-      run: 
-        working-directory: starter/frontend
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v3
-
-
-
-
