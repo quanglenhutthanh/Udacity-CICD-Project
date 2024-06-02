@@ -1,9 +1,10 @@
-name: Frontend Continuous deployment
+name: Frontend Continuous Deployment
 
 on:
   push:
     branches:
       - main
+
   workflow_dispatch:
 
 jobs:
