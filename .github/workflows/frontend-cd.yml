@@ -1,0 +1,49 @@
+name: Frontend Continuous deployment
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-test
+    defaults:
+      run: 
+        working-directory: starter/frontend
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Setup Node JS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '21'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run test
+        run: npm test
+
+  build:
+    runs-on: ubuntu-test
+    needs: test
+    defaults:
+      run: 
+        working-directory: starter/frontend
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+  deploy:
+    runs-on: ubuntu-test
+    needs: build
+    defaults:
+      run: 
+        working-directory: starter/frontend
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+
+
+
