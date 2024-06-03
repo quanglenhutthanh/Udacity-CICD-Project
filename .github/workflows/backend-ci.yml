@@ -1,5 +1,4 @@
-name: Backend Continous Inetgration
-
+name: Backend Continous Integration
 on:
   pull_request:
     types:
