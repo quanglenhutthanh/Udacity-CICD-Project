@@ -41,4 +41,16 @@ jobs:
           aws-region: us-east-1
       - name: Login AWS ECR
         uses: aws-actions/amazon-ecr-login@v1
+      - name: Connect to cluster
+        run: |
+          aws eks update-kubeconfig --name cluster
+
+      - name: Build and push the image to ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ env.REPO_NAME }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          export EXTERNALIP=$(kubectl get svc backend -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}{"\n"}{.status.loadBalancer.ingress[0].ip}')
+          echo "Backend API Url" $EXTERNALIP
       
