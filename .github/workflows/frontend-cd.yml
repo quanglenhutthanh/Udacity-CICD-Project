@@ -53,4 +53,6 @@ jobs:
         run: |
           export EXTERNALIP=$(kubectl get svc backend -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}{"\n"}{.status.loadBalancer.ingress[0].ip}')
           echo "Backend API Url" $EXTERNALIP
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg=REACT_APP_MOVIE_API_URL=http://$EXTERNALIP .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
       
