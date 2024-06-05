@@ -5,6 +5,8 @@ on:
     branches:
     - main
   workflow_dispatch:
+env:
+  REPO_NAME: "backend"
 jobs:
   test:
       runs-on: ubuntu-latest
