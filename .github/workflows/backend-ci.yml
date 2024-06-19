@@ -69,3 +69,5 @@ jobs:
         run: pip install pipenv
       - name: Install dependencies
         run: pipenv install
+      - name: Run docker build
+        run: docker build -t movie-app:latest .
